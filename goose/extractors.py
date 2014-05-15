@@ -118,6 +118,17 @@ class ContentExtractor(object):
         title = title_pieces[large_text_index]
         return TITLE_REPLACEMENTS.replaceAll(title).strip()
 
+    def get_first_heading(self, heading_number):
+        """
+        Fetch the first <h?> heading
+        """
+        h_elements = self.parser.getElementsByTag(
+            self.article.doc, tag='h%d' % heading_number)
+        if h_elements is None or len(h_elements) == 0:
+            return ''
+        else:
+            return self.parser.getText(h_elements[0])
+
     def get_favicon(self):
         """\
         Extract the favicon from a website

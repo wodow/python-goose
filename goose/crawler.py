@@ -99,6 +99,8 @@ class Crawler(object):
         # self.article.publish_date = config.publishDateExtractor.extract(doc)
         # self.article.additional_data = config.get_additionaldata_extractor.extract(doc)
         self.article.title = self.extractor.get_title()
+        self.article.first_h1 = self.extractor.get_first_heading(1)
+        self.article.first_h2 = self.extractor.get_first_heading(2)
         self.article.meta_lang = self.extractor.get_meta_lang()
         self.article.meta_favicon = self.extractor.get_favicon()
         self.article.meta_description = self.extractor.get_meta_description()
